@@ -88,4 +88,5 @@ private let tweets = [
   Tweet(id: 18, content: "Not with that attitude", user: "Lawrence Li"),
   Tweet(id: 19, content: "Hold on to your butts!", user: "Roberto Pedroso"),
   Tweet(id: 20, content: "Call me PR papi", user: "James Cerrato"),
+  Tweet(id: 21, content: "*tries coffee* Whoa; is this what being alive feels like?", user: "Dan Katz"),
 ]
