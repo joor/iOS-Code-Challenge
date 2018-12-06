@@ -18,7 +18,7 @@ Cloning this project to begin, please build a simple Twitter client with two scr
     - Show a list of tweets (Provided by `TwitterClient.shared.loadTimeline`)
       - Cells should include a title with the posting user’s handle and the content of the tweet
     - Navigation bar should have a "Log Out" button. On tapping this button:
-      - `TwitterClient.shared.isLoggedIn.value` should be set to `true`
+      - `TwitterClient.shared.isLoggedIn.value` should be set to `false`
       - The Log In screen should be shown
 
 ### Additional Requirements: 
