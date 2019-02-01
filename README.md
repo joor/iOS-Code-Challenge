@@ -8,7 +8,17 @@ This allows us to replicate a real-work scenario as much as possible, without sp
 We've done our best to document the requirements and helper class `TwitterClient` as much as possible, but please feel free to reach out and ask questions if anything is unclear.
 
 
-## Instructions:
+## Evaluation
+We will be evaluating the code on:
+- Code clarity/readability
+- Architecture
+  - Please architect this app in the way that you’d want to build at JOOR (6+ developers over 2+ years). 
+  We understand that this may fall into over-architecting for the task at hand, 
+  but the purpose is to understand how you draw the lines between different groups of responsibilities and how that translates into functional layers
+- Test coverage and clarity
+
+
+## Instructions
 Cloning this project to begin, please build a simple Twitter client with two screens:
   - Log In
     - There should be fields to type in a username and a password
@@ -30,17 +40,7 @@ Cloning this project to begin, please build a simple Twitter client with two scr
   - Any UI tests
 
 
-## Evaluation
-We will be evaluating the code on:
-- Code clarity/readability
-- Architecture
-  - Please architect this app in the way that you’d want to build at JOOR (6+ developers over 2+ years). 
-  We understand that this may fall into over-architecting for the task at hand, 
-  but the purpose is to understand how you draw the lines between different groups of responsibilities and how that translates into functional layers
-- Test coverage and clarity
-
-
-## Notes:
+## Notes
 - #### `TwitterClient`
 We've provided a `TwitterClient` class to start you off. 
 This class will help manage the logged in status, as well as the tweets to display.
@@ -62,4 +62,4 @@ If the class documentation provided is not adequate, please feel free to ask any
 Feel free to use any frameworks that will help you, just please edit README's "Additional Frameworks Used" section below to note the ones you’ve used and what you’ve used them for
 
 
-## Additional Frameworks Used:
+## Additional Frameworks Used
