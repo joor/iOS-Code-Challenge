@@ -22,7 +22,7 @@ We will be evaluating the code on:
 Cloning this project to begin, please build a simple Twitter client with two screens:
   - Log In
     - There should be fields to type in a username and a password
-    - Upon tapping a "Log In" button, the code should eventually call `TwitterClient.logIn(username:, password:)` with the provided credentials
+    - Upon tapping a "Log In" button, the code should eventually call `TwitterClient.logIn(username:, password:)` with the provided credentials; i.e. there may be intermediate objects and/or method calls in between tapping the button and calling `logIn(username:, password:)`
     - Once `TwitterClient.isLoggedIn.value` goes to `true`, the app should show the Tweet Feed screen
   - Tweet Feed
     - Show a list of tweets (Provided by `TwitterClient.shared.loadTimeline`)
