@@ -15,7 +15,7 @@ We will be evaluating the code on:
   - Please architect this app in the way that you’d want to build at JOOR (6+ developers over 2+ years). 
   We understand that this may fall into over-architecting for the task at hand, 
   but the purpose is to understand how you draw the lines between different groups of responsibilities and how that translates into functional layers
-- Test coverage and clarity
+- Unit test coverage and clarity
 
 
 ## Instructions
