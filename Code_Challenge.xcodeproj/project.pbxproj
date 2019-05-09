@@ -222,10 +222,11 @@
 				TargetAttributes = {
 					E5391C1221AB788E0052B1EA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					E5391C2621AB788F0052B1EA = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						TestTargetID = E5391C1221AB788E0052B1EA;
 					};
 				};
@@ -536,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JOOR.Code-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -555,7 +556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JOOR.Code-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -578,7 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "JOOR.Code-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Code_Challenge.app/Code_Challenge";
 			};
@@ -601,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "JOOR.Code-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Code_Challenge.app/Code_Challenge";
 			};

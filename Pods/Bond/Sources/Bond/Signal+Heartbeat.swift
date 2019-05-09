@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2018 DeclarativeHub/Bond
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,25 +22,21 @@
 //  THE SOFTWARE.
 //
 
-public protocol OptionalProtocol {
-  associatedtype Wrapped
-  var _unbox: Optional<Wrapped> { get }
-  init(nilLiteral: ())
-  init(_ some: Wrapped)
-}
+#if os(iOS) || os(tvOS)
 
-extension Optional: OptionalProtocol {
-  public var _unbox: Optional<Wrapped> {
-    return self
-  }
-}
+import ReactiveKit
+import UIKit
 
-func ==<O: OptionalProtocol>(lhs: O, rhs: O) -> Bool
-  where O.Wrapped: Equatable {
-    return lhs._unbox == rhs._unbox
-}
+extension SignalProtocol {
 
-func !=<O: OptionalProtocol>(lhs: O, rhs: O) -> Bool
-  where O.Wrapped: Equatable {
-    return !(lhs == rhs)
+    /// Fires an event on start and every `interval` seconds as long as the app is in foreground.
+    /// Pauses when the app goes to background. Restarts when the app is back in foreground.
+    public static func heartbeat(interval seconds: Double) -> Signal<Void, Never> {
+        let willEnterForeground = NotificationCenter.default.reactive.notification(name: UIApplication.willEnterForegroundNotification)
+        let didEnterBackgorund = NotificationCenter.default.reactive.notification(name: UIApplication.didEnterBackgroundNotification)
+        return willEnterForeground.replaceElements(with: ()).start(with: ()).flatMapLatest { () -> Signal<Void, Never> in
+            return SafeSignal<Int>(sequence: 0..., interval: seconds, queue: .global()).replaceElements(with: ()).start(with: ()).take(until: didEnterBackgorund)
+        }
+    }
 }
+#endif

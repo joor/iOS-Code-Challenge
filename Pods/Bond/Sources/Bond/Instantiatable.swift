@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2015 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2018 DeclarativeHub/Bond
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,9 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-//! Project version number for ReactiveKit.
-FOUNDATION_EXPORT double ReactiveKitVersionNumber;
+public protocol Instantiatable {
 
-//! Project version string for ReactiveKit.
-FOUNDATION_EXPORT const unsigned char ReactiveKitVersionString[];
+    init()
+}
