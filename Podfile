@@ -4,7 +4,7 @@ target 'Code_Challenge' do
   use_frameworks!
   inhibit_all_warnings!
 
-  pod 'Bond', '= 7.5.0'
+  pod 'Bond', '= 7.6.0'
 
   target 'Code_ChallengeTests' do
     inherit! :search_paths
