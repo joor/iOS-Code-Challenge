@@ -90,5 +90,6 @@ private let tweets = [
   Tweet(id: 20, content: "Call me PR papi", user: "James Cerrato"),
   Tweet(id: 21, content: "*tries coffee* Whoa; is this what being alive feels like?", user: "Dan Katz"),
   Tweet(id: 22, content: "The thing is: when you have a power drill, you win.", user: "Julia Fraenkel"),
-  Tweet(id: 23, content: "So if we stuck it in a lake, it would float. Because it's clearly a witch, cause that's sourcery.", user: "Ethan Riback")
+  Tweet(id: 23, content: "So if we stuck it in a lake, it would float. Because it's clearly a witch, cause that's sourcery.", user: "Ethan Riback"),
+  Tweet(id: 24, content: "You gotta turn your own wrenches, man.", user: "Kevin Maldjian")
 ]
