@@ -91,5 +91,13 @@ private let tweets = [
   Tweet(id: 21, content: "*tries coffee* Whoa; is this what being alive feels like?", user: "Dan Katz"),
   Tweet(id: 22, content: "The thing is: when you have a power drill, you win.", user: "Julia Fraenkel"),
   Tweet(id: 23, content: "So if we stuck it in a lake, it would float. Because it's clearly a witch, cause that's sourcery.", user: "Ethan Riback"),
-  Tweet(id: 24, content: "You gotta turn your own wrenches, man.", user: "Kevin Maldjian")
+  Tweet(id: 24, content: "You gotta turn your own wrenches, man.", user: "Kevin Maldjian"),
+  Tweet(id: 25, content: "I used to kick ass.", user: "Steve Lim"),
+  Tweet(id: 26, content: "I don't have a quote. I don't. It's not going to happen.", user: "Jackie Wu"),
+  Tweet(id: 27, content: "Life is juanderful", user: "Bryan Pan"),
+  Tweet(id: 28, content: "wHaT cOuLd gO wRoNg", user: "Katie McKew"),
+  Tweet(id: 29, content: "I think I'm addicted to emergen-c", user: "Katie McKew"),
+  Tweet(id: 30, content: "oui meat", user: "Bryan Pan"),
+  Tweet(id: 31, content: "This is the sort of hoodie I dreamed of when I was 19 (and going to career fairs)", user: "Juliet K. Benjamin"),
+  Tweet(id: 32, content: "also it hits different at 3am when you order it off the late night cravers menu with FREEDELV in the coupon box every time like a heathen", user: "Amanda Liu")
 ]
