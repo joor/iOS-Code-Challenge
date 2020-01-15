@@ -99,5 +99,9 @@ private let tweets = [
   Tweet(id: 29, content: "I think I'm addicted to emergen-c", user: "Katie McKew"),
   Tweet(id: 30, content: "oui meat", user: "Bryan Pan"),
   Tweet(id: 31, content: "This is the sort of hoodie I dreamed of when I was 19 (and going to career fairs)", user: "Juliet K. Benjamin"),
-  Tweet(id: 32, content: "also it hits different at 3am when you order it off the late night cravers menu with FREEDELV in the coupon box every time like a heathen", user: "Amanda Liu")
+  Tweet(id: 32, content: "also it hits different at 3am when you order it off the late night cravers menu with FREEDELV in the coupon box every time like a heathen", user: "Amanda Liu"),
+  Tweet(id: 33, content: "Chonkers make me go bonkers", user: "Ethan Riback"),
+  Tweet(id: 34, content: "Yesterday I did some stuff, today I'ma do some more stuff, no blockers.", user: "Isaac Casanova"),
+  Tweet(id: 35, content: "> You'll be happy to know that no crustaceans were harmed in making these chips (Dan Katz) ... then how did they make them so crusty?", user: "Daniel Cohen"),
+  Tweet(id: 36, content: "I sneeze and I'm like.. what the fuck is wrong with me?", user: "Jacob Mittelstaedt")
 ]
