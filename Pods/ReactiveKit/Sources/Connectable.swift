@@ -35,7 +35,6 @@ public protocol ConnectableSignalProtocol: SignalProtocol {
 public final class ConnectableSignal<Source: SignalProtocol>: ConnectableSignalProtocol {
     
     private let source: Source
-    private let lock = NSRecursiveLock()
     private let subject: Subject<Source.Element, Source.Error>
     
     public init(source: Source, subject: Subject<Source.Element, Source.Error>) {
@@ -45,7 +44,6 @@ public final class ConnectableSignal<Source: SignalProtocol>: ConnectableSignalP
     
     /// Start the signal.
     public func connect() -> Disposable {
-        lock.lock(); defer { lock.unlock() }
         if !subject.isTerminated {
             return source.observe(with: subject)
         } else {
@@ -55,7 +53,7 @@ public final class ConnectableSignal<Source: SignalProtocol>: ConnectableSignalP
     
     /// Register an observer that will receive events from the signal.
     /// Note that the events will not be generated until `connect` is called.
-    public func observe(with observer: @escaping (Event<Source.Element, Source.Error>) -> Void) -> Disposable {
+    public func observe(with observer: @escaping (Signal<Source.Element, Source.Error>.Event) -> Void) -> Disposable {
         return subject.observe(with: observer)
     }
 }
@@ -64,23 +62,25 @@ extension ConnectableSignalProtocol {
     
     /// Convert connectable signal into the ordinary signal by calling `connect`
     /// on the first observation and calling dispose when number of observers goes down to zero.
-    public func refCount() -> Signal<Element, Error> {
-        let lock = NSRecursiveLock()
-        var count = 0
-        var connectionDisposable: Disposable? = nil
+    /// - parameter disconnectCount: Subscriptions count on which to disconnect. Defaults to `0`.
+    public func refCount(disconnectCount: Int = 0) -> Signal<Element, Error> {
+        let lock = NSRecursiveLock(name: "com.reactive_kit.connectable_signal.ref_count")
+        var _count = 0
+        var _connectionDisposable: Disposable? = nil
         return Signal { observer in
             lock.lock(); defer { lock.unlock() }
-            count = count + 1
+            _count = _count + 1
             let disposable = self.observe(with: observer.on)
-            if connectionDisposable == nil {
-                connectionDisposable = self.connect()
+            if _connectionDisposable == nil {
+                _connectionDisposable = self.connect()
             }
             return BlockDisposable {
+                lock.lock(); defer { lock.unlock() }
                 disposable.dispose()
-                count = count - 1
-                if count == 0 {
-                    connectionDisposable?.dispose()
-                    connectionDisposable = nil
+                _count = _count - 1
+                if _count == disconnectCount {
+                    _connectionDisposable?.dispose()
+                    _connectionDisposable = nil
                 }
             }
         }
@@ -115,15 +115,17 @@ extension SignalProtocol {
     
     /// Ensure that all observers see the same sequence of elements.
     /// Shorthand for `replay(limit).refCount()`.
-    public func share(limit: Int = Int.max) -> Signal<Element, Error> {
-        return replay(limit: limit).refCount()
+    /// - parameter limit: Number of latest elements to buffer.
+    /// - parameter keepAlive: Whether to keep the source signal connected even when all subscribers disconnect.
+    public func share(limit: Int = Int.max, keepAlive: Bool = false) -> Signal<Element, Error> {
+        return replay(limit: limit).refCount(disconnectCount: keepAlive ? Int.min : 0)
     }
 }
 
 extension SignalProtocol where Element: LoadingStateProtocol {
     
     /// Ensure that all observers see the same sequence of elements. Connectable.
-    public func replayValues(limit: Int = Int.max) -> ConnectableSignal<Signal<LoadingState<LoadingValue, LoadingError>, Error>> {
+    public func replayValues(limit: Int = Int.max) -> ConnectableSignal<Signal<LoadingState<Element.LoadingValue, Element.LoadingError>, Error>> {
         if limit == 0 {
             return ConnectableSignal(source: map { $0.asLoadingState }, subject: PassthroughSubject())
         } else {
@@ -133,7 +135,7 @@ extension SignalProtocol where Element: LoadingStateProtocol {
     
     /// Ensure that all observers see the same sequence of elements.
     /// Shorthand for `replay(limit).refCount()`.
-    public func shareReplayValues(limit: Int = Int.max) -> Signal<LoadingState<LoadingValue, LoadingError>, Error> {
+    public func shareReplayValues(limit: Int = Int.max) -> Signal<LoadingState<Element.LoadingValue, Element.LoadingError>, Error> {
         return replayValues(limit: limit).refCount()
     }
 }
